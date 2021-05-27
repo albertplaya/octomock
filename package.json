@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "tsc && node dist/src/server.js",
-    "test": "jest",
-    "testall": "jest --watchAll --detectOpenHandles"
+    "test": "jest --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",

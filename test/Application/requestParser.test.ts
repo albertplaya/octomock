@@ -1,7 +1,7 @@
 import { RequestParser } from "../../src/Application/requestParser";
 import { RequestRepositoryInMemory } from "../Mock/requestRepositoryInMemory";
 describe("Request parser application service", () => {
-  it("Parse empty file", () => {
+  it("Parse empty file", (done) => {
     let repository = new RequestRepositoryInMemory();
     let requestParser = new RequestParser(
       "test/Mock/Files/EmptyDir",
@@ -10,9 +10,10 @@ describe("Request parser application service", () => {
 
     requestParser.execute();
     expect(repository.total()).toBe(0);
+    done();
   });
 
-  it("Parse one request", () => {
+  it("Parse one request", (done) => {
     let repository = new RequestRepositoryInMemory();
     let requestParser = new RequestParser(
       "test/Mock/Files/OneFile",
@@ -21,9 +22,10 @@ describe("Request parser application service", () => {
 
     requestParser.execute();
     expect(repository.total()).toBe(1);
+    done();
   });
 
-  it("Parse multiple request", () => {
+  it("Parse multiple request", (done) => {
     let repository = new RequestRepositoryInMemory();
     let requestParser = new RequestParser(
       "test/Mock/Files/MultipleFilesAndDirs",
@@ -32,5 +34,6 @@ describe("Request parser application service", () => {
 
     requestParser.execute();
     expect(repository.total()).toBe(5);
+    done();
   });
 });
