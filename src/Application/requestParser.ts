@@ -13,7 +13,13 @@ export class RequestParser {
   execute(): void {
     try {
       const addFileIntoRepository = (filePath: string): void => {
-        this.requestRepository.put(JSON.parse(readFileSync(filePath, "utf-8")));
+        try {
+          this.requestRepository.put(
+            JSON.parse(readFileSync(filePath, "utf-8"))
+          );
+        } catch {
+          return null;
+        }
       };
       const parseFiles = (path: string) => {
         readdirSync(path).forEach((file: string): void => {
