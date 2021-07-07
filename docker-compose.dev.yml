@@ -1,7 +1,10 @@
 version: "3.1"
 services:
-  redis:
-    image: redis:alpine
-    container_name: redis
+  octomock:
+    container_name: octomock
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "6379:6379"
+      - "3000:3000"
+

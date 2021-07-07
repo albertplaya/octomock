@@ -2,7 +2,7 @@ import { app } from "../../src/app";
 import request from "supertest";
 import { getOkRequestFixtures, postOkRequestFixtures } from "../Mock/requestFixtures";
 
-describe("Execute request", () => {
+describe("Execute request suit", () => {
   it("Execute get request with 200 response", async (done) => {
     const req = getOkRequestFixtures();
     const response = await request(app).get(req.path);
