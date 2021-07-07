@@ -3,12 +3,19 @@ list:
 	@echo ""
 	@echo "Useful targets:"
 	@echo ""
+	@echo "  build            > build local server"
 	@echo "  start            > start local server"
 	@echo "  restart          > restart local server"
 	@echo "  stop             > stop local server"
+	@echo "  rebuild          > rebuild local server"
+	@echo "  test             > execute test"
 
 .PHONY: all install tests clean
 all: clean install tests
+
+.PHONY: build
+build:
+	docker-compose -f docker-compose.dev.yml build
 
 .PHONY: start
 start:
@@ -28,3 +35,7 @@ rebuild:
 	docker-compose -f docker-compose.dev.yml stop
 	docker-compose -f docker-compose.dev.yml build
 	docker-compose -f docker-compose.dev.yml up -d --remove-orphans
+
+.PHONY: test
+test:
+	docker exec -it octomock npm test
