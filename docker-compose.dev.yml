@@ -8,3 +8,6 @@ services:
     ports:
       - "3000:3000"
 
+
+# DONE
+# docker run -p 3000:3000 -v $(pwd)/../ara.catlliure/:/usr/src/app/request octomock_octomock &

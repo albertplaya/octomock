@@ -1,14 +1,7 @@
-FROM node:16
+FROM node:16-stretch-slim
 
-# Install Redis server
-RUN wget http://download.redis.io/redis-stable.tar.gz && \
-  tar xvzf redis-stable.tar.gz && \
-  cd redis-stable && \
-  make && \
-  mv src/redis-server /usr/bin/ && \
-  cd .. && \
-  rm -r redis-stable && \
-  npm install -g concurrently
+#Install Redis server
+RUN apt-get update && apt-get install -y redis-server
 
 EXPOSE 6379
 
