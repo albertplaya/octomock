@@ -8,6 +8,7 @@ list:
 	@echo "  restart          > restart local server"
 	@echo "  stop             > stop local server"
 	@echo "  rebuild          > rebuild local server"
+	@echo "  bash             > execute bash"
 	@echo "  test             > execute test"
 
 .PHONY: all install tests clean
@@ -35,6 +36,10 @@ rebuild:
 	docker-compose -f docker-compose.dev.yml stop
 	docker-compose -f docker-compose.dev.yml build
 	docker-compose -f docker-compose.dev.yml up -d --remove-orphans
+
+.PHONY: bash
+bash:
+	docker exec -it octomock bash
 
 .PHONY: test
 test:
